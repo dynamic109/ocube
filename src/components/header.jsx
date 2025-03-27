@@ -1,8 +1,17 @@
 import React from "react";
 
-const Header = ()  => {
+function Header () {
     <div>
-        <p className="text-red font-extrabold text-8xl">Hi, Emmanuel</p>
+        <nav>
+       <img src="/Logo.svg"alt="logo"/>
+
+        
+
+
+
+
+
+        </nav>
     </div>
 }
 
