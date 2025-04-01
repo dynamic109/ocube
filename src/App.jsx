@@ -1,26 +1,31 @@
 import React from "react";
-import { BrowserRouter, Route, Router, } from "react-router-dom";
-import { Routes } from "react-router"
+import { BrowserRouter, Route, Router } from "react-router-dom";
+import { Routes } from "react-router";
 import LandingPage from "./components/landing-page/landing";
 import Dashlogin from "./components/dashboard/Dashlogin";
 import Signin from "./components/dashboard/Signin";
- import Resources from "./components/dashboard/Resources";
+import Resources from "./components/dashboard/Resources";
+
+import Dashlayout from "./components/Layout/Dashlayout";
 function App() {
   return (
     <div>
-      
-      
       <BrowserRouter>
-      
         <Routes>
-          <Route path="/"  element={<LandingPage/>}/>
-        <Route path="/Dashlogin" element={<Dashlogin />} />
-        <Route path="/Signin" element={<Signin/>} /> 
-        <Route path="/Resources" element={<Resources/>} /> 
-        
-          </Routes>
+          {/* regular pages */}
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/Dashlogin" element={<Dashlogin />} />
+          <Route path="/Signin" element={<Signin />} />
+
+          {/* dashboard pages with sidebar */}
+          <Route path="/dashboard" element={<Dashlayout />}>
+           
+            <Route index element={<div>dashboard</div>} />
+            <Route path="courses" element={<div>Courses</div>} />
+            <Route path="resources" element={<Resources />} />
+          </Route>
+        </Routes>
       </BrowserRouter>
-       
     </div>
   );
 }

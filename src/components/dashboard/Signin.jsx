@@ -3,7 +3,16 @@ import Logo from "/Logo.png";
 const Signin = () => {
     return( <>
           <section className="m-auto p-6 ">
-                    <div>
+          <div
+                className="bg-no-repeat"
+                style={{
+                  backgroundImage: "url('/Ocubebg.png')",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  height: "100%",
+                  width: "100%",
+                }}
+              >
                     <div  className=" flex  flex-col justify-center  items-center">
                 <div>< img src={Logo} alt="logo" /></div>  
                        <div>
@@ -36,7 +45,7 @@ const Signin = () => {
 
 
                             <form className="mt-6">
-                               <div className="flex justify-between"><label className=" ml-2 text-base text-lg font-medium">Password</label>
+                               <div className="flex justify-between"><label className=" ml-2 text-lg font-medium">Password</label>
                                 <button className="text-[#148E88] text-end"> forgot password?</button></div> 
                             <input className="w-full border-2 border-gray-100 rounded-xl p-3 mt-1   "
                                    placeholder="Enter your password"
