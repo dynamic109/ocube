@@ -55,7 +55,7 @@ const Signin = () => {
 
 
                             <form className="mt-6">
-                               <div className="flex justify-between"><label className=" ml-2 text-base text-lg font-medium">Password</label>
+                               <div className="flex justify-between"><label className=" ml-2  text-lg font-medium">Password</label>
                                 <button className="text-[#148E88] text-end"> Confrim password?</button></div> 
                             <input className="w-full border-2 border-gray-100 rounded-xl p-3 mt-1   "
                                    placeholder="Confrim password"

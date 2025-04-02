@@ -7,6 +7,7 @@ import Signin from "./components/dashboard/Signin";
 import Resources from "./components/dashboard/Resources";
 
 import Dashlayout from "./components/Layout/Dashlayout";
+import Dashboard  from "./components/dashboard/Dashboard";
 function App() {
   return (
     <div>
@@ -20,7 +21,7 @@ function App() {
           {/* dashboard pages with sidebar */}
           <Route path="/dashboard" element={<Dashlayout />}>
            
-            <Route index element={<div>dashboard</div>} />
+            <Route index element={<Dashboard/>} />
             <Route path="courses" element={<div>Courses</div>} />
             <Route path="resources" element={<Resources />} />
           </Route>
