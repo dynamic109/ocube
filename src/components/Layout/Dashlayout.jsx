@@ -9,7 +9,7 @@ const Dashlayout = ()  => {
   return (
   <> <SideBar/> 
    
-    <div className='pl-0  lg:pl-[280px]'><Outlet/></div>
+    <div className='pl-0   lg:pl-[20%] lg:p-[auto]'><Outlet/></div>
     </>
   )
 
