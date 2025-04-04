@@ -1,4 +1,5 @@
 import React from "react";
+import Marquee from "react-fast-marquee";
 
 function Hero() {
   const features = [
@@ -35,10 +36,12 @@ function Hero() {
           <img src="/Frame.svg" className="w-200 h-100" />
         </div>
       </div>
-      <p className="text-center mt-4 ">Platforms That Motivates Us</p>
-      <div></div>
+      
+      <div> <p className="text-center mt-4 ">Platforms That Motivates Us</p></div>
+<Marquee>
+     
       <div className="flex justify-between px-10 m-7 lg:flex-row flex-col" >
-        <div className="flex justify-center items-center gap-7">
+        <div className="flex lg:gap-30 justify-center items-center gap-7">
         <img src="/coursera.svg" alt=""  className="w-19 lg:w-auto"/>
         <img src="/udemy.svg" alt=""  className="w-19 lg:w-auto"/>
         <img src="/masterclass.svg" alt="" className="w-19 lg:w-auto"/>
@@ -46,8 +49,11 @@ function Hero() {
         <div className="flex justify-center items-center gap-15 mt-3 px-10">
         <img src="/skillshare.svg" alt="" className="w-30 lg:w-auto" />
         <img src="/Udacity.svg" alt="" className="w-30 lg:w-auto"/>
+        
         </div>
+       
       </div>
+      </Marquee>
 
       <div className="flex justify-center mt-10 px-10 gap-4 lg:flex-row flex-col">
         <div className="mt-17">
