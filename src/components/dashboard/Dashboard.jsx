@@ -1,5 +1,5 @@
 import React from 'react'
-import { CiSearch } from "react-icons/ci";
+import { CiSearch ,CiStar  } from "react-icons/ci";
 import { FiBookOpen } from "react-icons/fi";
 import { RiTimerLine, RiFileList3Line } from "react-icons/ri";
 import { IoIosPeople } from "react-icons/io";
@@ -9,7 +9,7 @@ const tasks =[
     {
         taskimg:<RiTimerLine />,
         tasktext:"Total Learning Hour",
-        tasknum:"2",
+        tasknum:"14hr 32min",
 
     },
     {
@@ -36,63 +36,108 @@ const tasks2 =[
         taskimg2:< img src="/google.png" alt="google"/>,
         tasklogo2:< FcGoogle/>,
         tasktext2:"Google UX Design",
-        taskp2:"srxcvjnxzes67ogkjvhcgfdzswA4K5SUDTMCGHBVCXDZSYRMFHXBVZRSDUYCJHBVGFZRYFGX",
-        tasknum2:"2",
+        taskp2:"You will create designs on paper and in digital design tools like Figma and Adobe XD. By the end of the certificate program, you will have a professional UX portfolio that includes three end-to-end projects.VGFZRYFGX",
+        tasknum2:"210/22 lessons",
 
     },
     {
         taskimg2:<img src="/meta.png" alt="meta"/>,
-        tasklogo2:<BsMeta/>,
-        tasktext2:"Completed Courses",
-        taskp2: "refvrdthgvhioifurtdfogljbkmnbfxstudcghbglk",
-        tasknum2:"4",
+        tasklogo2:<BsMeta/> ,
+        tasktext2:"Intro to Front-End Dev.",
+        taskp2: "This course is a good place to start if you want to become a web dveloper. You will learn about the day-to-day responsibilities of a web developer and get a general understanding.",
+        tasknum2:"10/22 lessons",
         
 
     },
 ]
+const task3 = [
+  { 
+   taskimg3:<img className='bg-white p-5' src="/inst.png" alt=""/>,
+   taskinst: "Instructor",
+   taskcourse:"Best Course",
+   taskstudent:"Student",
+   taskratting:"Ratting",
+
+  },
+  { 
+    taskimg3:<img  src="/inst1.png" alt=""/>,
+    taskinst: "Johnathan Nuel",
+    taskcourse:"Graphic Design Basics: Core Principles for Visual Design",
+    taskstudent:"113,949",
+    taskratting:<CiStar/> ,
+ 
+   },
+   { 
+    taskimg3:<img bg-white p-2 src="/inst2.png" alt=""/>,
+    taskinst: "Tomi Falana",
+    taskcourse:"Fundamentals of DSLR Photography",
+    taskstudent:"89,647",
+    taskratting:<CiStar/>,
+ 
+   },
+   { 
+    taskimg3:<img  src="/inst3.png" alt=""/>,
+    taskinst: "Esther Mark",
+    taskcourse:"Creative Writing: Crafting Personal Essays with Impact",
+    taskstudent:"57,018",
+    taskratting:<CiStar/>,
+ 
+   },
+   { 
+    taskimg3:<img  src="/inst4.png" alt=""/>,
+    taskinst: "Elizabeth Ressler",
+    taskcourse:"Plants at Home: Uplift Your Spirit & Your Space",
+    taskstudent:"32,727",
+    taskratting:<CiStar/>,
+ 
+   },
+
+]
 
  const Dashboard = () => {
   return (
-    <section className="m-auto p-auto ">
+    <section className="m-auto bg-[white]  p-auto ">
             <div className=" p-6">
-              <h1 className="font-bold text-2xl pt-5">Dashboard</h1>
-              <p className="text-[grey]">
+              <h1 className="font-bold text-[34px] pt-5">Dashboard</h1>
+              <p className="text-[grey] text-[14px] ">
                welcome back {""},Learn something new today.
               </p>
-              <div className="flex px-6 mt-3 w-[100%] placeholder-gray-600 rounded-2xl items-center border">
-                <CiSearch />
+              <div className="flex mt-3 ">
+               
                 <input
-                  className="  "
+                  className="px-6 w-[100%] border-none  placeholder-gray-600 rounded-2xl bg-[#FAFAFA] py-3  "
                   type="text"
-                  placeholder="Search for anything here "
+                  placeholder=" Search for anything here " 
                 />{" "}
               </div>
                
-               <div className=' flex mt-3 justify-between '>
+               <div className=' flex  flex-col  p-3 md:flex-row gap-3 mt-3 justify-between '>
                {tasks.map((item, index) => (
-                <div className=' bg-[#f7f3f3] p-6 border-amber-100 rounded-sm'
+                <div className=' bg-[#F5F5F5] p-6 border-amber-100 rounded-sm'
                 key={index}>
                     <div className='flex gap-2 items-center '>
-               <p className= ' bg-[#A2E7E4] p-4 text-white rounded-3xl'>{item.taskimg}</p> 
+               <p className= ' bg-[#148E88] p-4 text-white rounded-3xl'>{item.taskimg}</p> 
                   <div className='flex-col'>
-                    <p className='text-[#7B7B7B]'>{item.tasktext}</p>
-                  <p>{item.tasknum}</p>
+                    <p className='text-[#7B7B7B] text-[14px]'>{item.tasktext}</p>
+                  <p className='text-[24px]'>{item.tasknum}</p>
                   </div>
                 </div>
                 </div>
                ))}
 </div>
+              <h3 className='font-semibold text-[24px] mt-3'> jump back right in</h3>
                <div>
-               <div className=' flex mt-3 justify-between '>
+               <div className=' flex  items-center gap-3 flex-col md:flex-row mt-3 w-[90%] justify-between '>
                {tasks2.map((item, index) => (
-                <div className='  p-6 rounded-sm'
+                <div className=' flex justify-evenly gap-10 bg-[#F5F5F5] p-3 rounded-sm'
                 key={index}>
-                    <div className='flex gap-2 items-center '>
-               <p className= ' p-4 text-white'>{item.taskimg2}</p> 
-                  <div className='flex-col'>
-                    <p className='text-[#7B7B7B]'>{item.tasklogo2}</p>
-                  <p>{item.tasktext2}</p>
-                  <p>{item.taskp2}</p>
+                    <div className='flex flex-col md:flex-row  justify-between gap-2 items-center '>
+             {item.taskimg2} 
+                  <div className=' flex flex-col'>
+                    <p className='text-[#7B7B7B] '>{item.tasklogo2}</p>
+                  <p className='font-semibold '>{item.tasktext2}</p>
+                  <p className='text-[10px]'>{item.taskp2}</p>
+                  <p className='text-[12px]'>{item.tasknum2}</p>
                   </div>
                 </div>
                 </div>
@@ -100,6 +145,25 @@ const tasks2 =[
                </div>
 
 </div>
+
+             
+              <h2 className='font-semibold text-[24px] mt-2'>Meet the Top Rated Instructors</h2>
+              <div >
+              {task3.map((item, index) => (
+                <div key={index} >
+                  <div className='flex flex-col md:flex-row mt-3 items-left justify-between gap-4'>
+               <div className='flex gap-3'> {item.taskimg3} <p>{item.taskinst}</p></div> 
+                
+                <p>{item.taskcourse}</p>
+                <p>{item.taskstudent}</p>
+                <p>{item.taskratting}</p>
+                </div>
+                </div>
+              ))}
+              
+             </div>
+
+
               </div>
               </section>
   )
