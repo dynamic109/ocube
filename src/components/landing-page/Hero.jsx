@@ -12,7 +12,7 @@ function Hero() {
     <div className="max-w-[1400px] mx-auto">
       <div className="flex lg:flex-row flex-col justify-between px-10 mt-10 ">
         <div className="">
-          <h2 className="text-3xl lg:text-4xl font-bold  m- lg:mt-35 text-center lg:text-left">
+          <h2 className="text-3xl lg:text-[50px] font-bold  m- lg:mt-35 text-center lg:text-left">
             The Ultimate way to 
             build a <br /> <span className="text-teal-700">perfect career.</span>
           </h2>

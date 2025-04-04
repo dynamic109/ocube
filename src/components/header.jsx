@@ -13,12 +13,12 @@ function Header({ isOpen, setIsOpen }) {
       <nav className={`${isOpen === true ?  "hidden" : "flex items-center justify-between"}   px-10 py-6`}>
         <img src={Logo} alt="logo" />
        <div className="flex space-x-7">
-        <ul>
-        <a href="#">Home</a>
-        <a href="#">Courses</a>
-        <a href="/Resources">Resources</a>
-        <a href="#">About Us</a>
-        <a href="#">Contact Us</a>
+        <ul className="flex gap-10">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Courses</a></li>
+        <li><a href="/Resources">Resources</a></li>
+       <li> <a href="#">About Us</a></li>
+       <li> <a href="#">Contact Us</a></li>
         
         </ul>
         </div>
