@@ -9,7 +9,7 @@ const tasks =[
     {
         taskimg:<RiTimerLine />,
         tasktext:"Total Learning Hour",
-        tasknum:"2",
+        tasknum:"14hr 32min",
 
     },
     {
@@ -96,42 +96,42 @@ const task3 = [
 
  const Dashboard = () => {
   return (
-    <section className="m-auto p-auto ">
+    <section className="m-auto bg-[white]  p-auto ">
             <div className=" p-6">
-              <h1 className="font-bold text-2xl pt-5">Dashboard</h1>
-              <p className="text-[grey]">
+              <h1 className="font-bold text-[34px] pt-5">Dashboard</h1>
+              <p className="text-[grey] text-[14px] ">
                welcome back {""},Learn something new today.
               </p>
-              <div className="flex px-6 mt-3 w-[100%] placeholder-gray-600 rounded-2xl items-center border">
-                <CiSearch />
+              <div className="flex mt-3 ">
+               
                 <input
-                  className="  "
+                  className="px-6 w-[100%] border-none  placeholder-gray-600 rounded-2xl bg-[#FAFAFA] py-3  "
                   type="text"
-                  placeholder="Search for anything here "
+                  placeholder=" Search for anything here " 
                 />{" "}
               </div>
                
-               <div className=' flex  flex-col md:flex-row gap-3 mt-3 justify-between '>
+               <div className=' flex  flex-col  p-3 md:flex-row gap-3 mt-3 justify-between '>
                {tasks.map((item, index) => (
-                <div className=' bg-[#f7f3f3] p-6 border-amber-100 rounded-sm'
+                <div className=' bg-[#F5F5F5] p-6 border-amber-100 rounded-sm'
                 key={index}>
                     <div className='flex gap-2 items-center '>
                <p className= ' bg-[#148E88] p-4 text-white rounded-3xl'>{item.taskimg}</p> 
                   <div className='flex-col'>
-                    <p className='text-[#7B7B7B]'>{item.tasktext}</p>
-                  <p>{item.tasknum}</p>
+                    <p className='text-[#7B7B7B] text-[14px]'>{item.tasktext}</p>
+                  <p className='text-[24px]'>{item.tasknum}</p>
                   </div>
                 </div>
                 </div>
                ))}
 </div>
-              <h3 className='font-semibold mt-3'> jump back right in</h3>
+              <h3 className='font-semibold text-[24px] mt-3'> jump back right in</h3>
                <div>
                <div className=' flex  items-center gap-3 flex-col md:flex-row mt-3 w-[90%] justify-between '>
                {tasks2.map((item, index) => (
-                <div className=' flex justify-between rounded-sm'
+                <div className=' flex justify-evenly gap-10 bg-[#F5F5F5] p-3 rounded-sm'
                 key={index}>
-                    <div className='flex flex-col md:flex-row items-center justify-between gap-2 items-center '>
+                    <div className='flex flex-col md:flex-row  justify-between gap-2 items-center '>
              {item.taskimg2} 
                   <div className=' flex flex-col'>
                     <p className='text-[#7B7B7B] '>{item.tasklogo2}</p>
@@ -147,7 +147,7 @@ const task3 = [
 </div>
 
              
-              <h2 className='font-semibold mt-2'>Meet the Top Rated Instructors</h2>
+              <h2 className='font-semibold text-[24px] mt-2'>Meet the Top Rated Instructors</h2>
               <div >
               {task3.map((item, index) => (
                 <div key={index} >
