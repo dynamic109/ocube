@@ -1,20 +1,27 @@
 import React from "react";
 import Logo from "../assets/Logo.svg"
+import { RxHamburgerMenu } from "react-icons/rx";
+// import { useState } from "react";
+import MobileNav from "./mobile-nav";
 
-function Header() {
+
+function Header({ isOpen, setIsOpen }) {
+   console.log(isOpen);
+
   return (
     <div>
-      <nav className="flex items-center justify-between px-10">
+      <nav className={`${isOpen === true ?  "hidden" : "flex items-center justify-between"}   px-10 py-6`}>
         <img src={Logo} alt="logo" />
-       <div className="flex space-x-7">
-        <a href="#">Home</a>
-        <a href="#">Courses</a>
-        <a href="#">Resources</a>
-        <a href="#">About Us</a>
+       <ul className="lg:flex space-x-7 list-none hidden">
+       <li> <a href="#">Home</a></li>
+       <li>  <a href="#">Courses</a> </li>
+        <li><a href="#">Resources</a></li>
+        <li> <a href="#">About Us</a></li>
         <a href="#">Contact Us</a>
-        </div>
+        
+        </ul>
 
-      <div className="flex space-x-4">
+      <div className="lg:flex space-x-4 hidden">
       <button className="border border-teal-700 text-teal-700 px-4 py-2 rounded-lg hover:bg-teal-50">
         Log In
       </button>
@@ -24,10 +31,15 @@ function Header() {
       </button>
 
       </div>
+     <div className="block lg:hidden" onClick={() => setIsOpen(true)}>
+     <RxHamburgerMenu />
 
+     </div>
 
 
       </nav>
+
+      <MobileNav  isOpen={isOpen}  setIsOpen={setIsOpen}/>
     </div>
   );
 }
