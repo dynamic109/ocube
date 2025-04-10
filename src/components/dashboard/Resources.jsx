@@ -76,7 +76,7 @@ const Resources = () => {
           <div className="flex mt-3 ">
             <div className="text-[#515050]"></div>
             <input
-              className="px-6 w-[100%] border-none  placeholder-gray-600 rounded-2xl bg-[#FAFAFA] py-3  "
+              className="px-6 w-[100%] border-none  placeholder-gray-600 rounded-2xl bg-[#F8F8F8] py-3  "
               type="text"
               placeholder="Search for anything here "
             />{" "}

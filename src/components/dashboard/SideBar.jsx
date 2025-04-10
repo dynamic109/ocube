@@ -32,6 +32,7 @@ const Navitems = [
 ];
 
 const SideBar = () => {
+  // const linkClass=({isActive})=> isActive?'bg-[#f0f6f6] hover:bg-[#148E88]';
   return (
     <>
       <div className="m-auto  p-auto ">
