@@ -6,7 +6,7 @@ function HeroSecondary() {
 
       <div>
 
-<div className=" flex lg:flex-row flex-col justify-center items-center gap-40 pt-10  ">
+<div className=" flex lg:flex-row flex-col justify-center items-center px-3 gap-40 pt-10  ">
 
 <div className="">
 <p className=" text-3xl lg:text-4xl font-bold lg:mb-4 px-3 text-center lg:text-left">Learn just about <br />

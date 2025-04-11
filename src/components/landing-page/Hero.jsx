@@ -38,7 +38,8 @@ function Hero() {
       </div>
       
       <div> <p className="text-center mt-4 ">Platforms That Motivates Us</p></div>
-<Marquee>
+
+ <div className="hidden lg:block"><Marquee>
      
       <div className="flex justify-between px-10 m-7 lg:flex-row flex-col" >
         <div className="flex lg:gap-30 justify-center items-center gap-7">
@@ -49,15 +50,34 @@ function Hero() {
         <div className="flex justify-center items-center gap-15 mt-3 px-10">
         <img src="/skillshare.svg" alt="" className="w-30 lg:w-auto" />
         <img src="/Udacity.svg" alt="" className="w-30 lg:w-auto"/>
-        
         </div>
        
       </div>
       </Marquee>
+      </div>
+
+
+      <div className="flex justify-between px-10 m-7 lg:hidden flex-col" >
+        <div className="flex lg:hidden justify-center items-center gap-7">
+        <img src="/coursera.svg" alt=""  className="w-19 lg:w-auto"/>
+        <img src="/udemy.svg" alt=""  className="w-19 lg:w-auto"/>
+        <img src="/masterclass.svg" alt="" className="w-19 lg:w-auto"/>
+        </div>
+        <div className="flex justify-center items-center gap-15 mt-3 px-10">
+        <img src="/skillshare.svg" alt="" className="w-30 lg:w-auto" />
+        <img src="/Udacity.svg" alt="" className="w-30 lg:w-auto"/>
+        </div>
+       
+      </div>
+
+
+
+
+
 
       <div className="flex justify-center mt-10 px-10 gap-4 lg:flex-row flex-col">
         <div className="mt-17">
-          <h2 className=" text-2xl lg:text-4xl font-bold text-center lg:text-left">
+          <h2 className=" text-2xl lg:text-[50px] font-bold text-center lg:text-left">
             Get on board with <br />
             high skilled tutors
           </h2>
@@ -91,10 +111,10 @@ function Hero() {
 
      <div className="flex justify-center gap-20 mt-2 lg-mt-10 lg:flex-row lg:gap-76 lg:mt-20 flex-col">
      <div className="mt-10  lg:mt-40">
-<h2 className=" text-3xl px-5 lg:text-4xl font-bold text-center mb-5 lg:text-left ">Get access to <br />
+<h2 className=" text-3xl px-5 lg:text-[50px] font-bold text-center mb-5 lg:text-left ">Get access to <br />
 top notch courses</h2>
 
-<p className="px-3 text-center lg:text-left lg:mt-3">We assist you in finding the ideal instructor who will help <br />
+<p className="px-4 text-center lg:text-left lg:mt-3">We assist you in finding the ideal instructor who will help <br />
 you perform above your potential because we are <br />
 aware that regular tuition is uninteresting.</p>
      </div>

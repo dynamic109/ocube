@@ -3,7 +3,7 @@ import React from "react";
 function HeroPrimary() {
   return <div className="max-w-[1400px] mx-auto">
 
-    <div className="bg-[rgb(243,244,246)] mt-15 py-7 lg:flex-row flex-col">
+    <div className="bg-[rgb(243,244,246)] mt-15 px-3 py-7 lg:flex-row flex-col">
       <h2 className="text-3xl lg:text-4xl font-bold flex justify-center items-center mt-10 text-center lg:text-left">Further your development with <br />
       our incredible features.</h2>
     <div className="flex py-4 justify-center items-center lg:flex-row lg:gap-10 flex-col" >
