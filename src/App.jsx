@@ -5,7 +5,7 @@ import LandingPage from "./components/landing-page/landing";
 import Dashlogin from "./components/dashboard/Dashlogin";
 import Signin from "./components/dashboard/Signin";
 import Resources from "./components/dashboard/Resources";
-
+import Course from "./components/dashboard/Course";
 import Dashlayout from "./components/Layout/Dashlayout";
 import Dashboard  from "./components/dashboard/Dashboard";
 function App() {
@@ -22,7 +22,7 @@ function App() {
           <Route path="/dashboard" element={<Dashlayout />}>
            
             <Route index element={<Dashboard/>} />
-            <Route path="courses" element={<div>Courses</div>} />
+            <Route path="courses" element={<div>{<Course />}</div>} />
             <Route path="resources" element={<Resources />} />
           </Route>
         </Routes>
