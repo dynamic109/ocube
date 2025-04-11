@@ -10,8 +10,8 @@ function Hero() {
     
   ];
   return (
-    <div className="max-w-[1400px] mx-auto">
-      <div className="flex lg:flex-row flex-col justify-between px-10 mt-10 ">
+    <div className="max-w-[1400px] mx-auto  ">
+      <div className="flex lg:flex-row flex-col justify-between  items-center px-10 mt-10 ">
         <div className="">
           <h2 className="text-3xl lg:text-[50px] font-bold  m- lg:mt-35 text-center lg:text-left">
             The Ultimate way to 
@@ -33,7 +33,7 @@ function Hero() {
           </div>
         </div>
         <div>
-          <img src="/Frame.svg" className="w-200 h-100" />
+          <img src="/Frame.svg" className="w-200 h-100 lg:w-[606px] lg:h-[746px]" />
         </div>
       </div>
       
@@ -75,8 +75,8 @@ function Hero() {
 
 
 
-      <div className="flex justify-center mt-10 px-10 gap-4 lg:flex-row flex-col">
-        <div className="mt-17">
+      <div className="flex justify-center items-center  px-10 gap-16 lg:flex-row flex-col">
+        <div className="">
           <h2 className=" text-2xl lg:text-[50px] font-bold text-center lg:text-left">
             Get on board with <br />
             high skilled tutors
@@ -92,7 +92,7 @@ function Hero() {
         </div>
 
         <div>
-          <img src="/Tutor-Image.svg" alt="" className="w-200 h-100" />
+          <img src="/Tutor-Image.svg" alt="" className=" w-[300px] h-[500px] lg:w-[560px] lg:h-[800px]" />
         </div>
       </div>
 
@@ -120,7 +120,7 @@ aware that regular tuition is uninteresting.</p>
      </div>
 
      <div className="flex flex-col lg:flex-row">
-      <img className="lg-w-[567px] lg:h-[700px] order-1 lg:order-none  w-[567]"src="/Courses.svg" alt="" />
+      <img className="lg:w-[567px] lg:h-[700px] order-1 lg:order-none  w-[567px]"src="/Courses.svg" alt="" />
      </div>
 
 
