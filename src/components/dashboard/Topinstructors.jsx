@@ -10,8 +10,8 @@ const instructors = [
 export default function TopInstructors() {
   return (
     <div className="mt-6">
-      <h3 className="text-lg font-bold mb-2">Meet the Top Rated Instructors</h3>
-      <table className="w-full bg-white shadow-md rounded-lg">
+      <h3 className="text-lg  font-bold mb-2">Meet the Top Rated Instructors</h3>
+      <table className=" w-full bg-white shadow-md rounded-lg">
         <thead>
           <tr className="text-left bg-[#FAFAFA] shadow-md  p-2">
             <th className="p-2">Instructor</th>

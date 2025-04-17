@@ -1,9 +1,7 @@
 import React from 'react';
-import { CiMenuKebab } from "react-icons/ci";
-
 const DashCard = ({ courseimg, title, author, text, progress, total }) => {
   return (
-    <div className="bg-white rounded-2xl mb-2 shadow-md w-[50%] p-4  ">
+    <div className="bg-white rounded-2xl mb-2 items-center  shadow-xl py-12 md:shadow md:w-[50%] px-3 md:p-4  ">
        
      <div className='flex  gap-3'> {courseimg }
      <div className='flex flex-col gap-2'><p className="text-sm text-gray-500 mb-2"> {author}</p>
@@ -15,7 +13,7 @@ const DashCard = ({ courseimg, title, author, text, progress, total }) => {
            {/* style={{ width: $( {progress} /{total}* 100) % }}  */}
         </div>
       
-      <div className='flex justify-between gap-0'>
+      <div className='flex  justify-between gap-0'>
       <div className="text-sm  mb-1">
         {progress}/{total} lessons
       </div>

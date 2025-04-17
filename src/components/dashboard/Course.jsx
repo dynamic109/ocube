@@ -74,28 +74,29 @@ const Course = () => {
                   <div className="flex mt-3 ">
                    
                     <input
-                      className="px-6 w-[100%] border-none  placeholder-gray-600 rounded-2xl bg-[#F8F8F8] py-3  "
+                      className="px-6 w-[100%] pb-3 border-none  placeholder-gray-600 rounded-2xl bg-[#F8F8F8] py-3  "
                       type="text"
                       placeholder=" Search for any course here " 
                     />{" "}
                   </div>
                   <h2 className="text-xl font-semibold mb-4">Your Courses</h2>
-      <div className="flex flex-col md:flex-row justify-between gap-4">
+      <div className="flex flex-col pb-3 items-center md:flex-row justify-between gap-4">
         {yourCourses.map((course, i) => (
           <CourseCard key={i} {...course} />
         ))}
       </div>
 
       <h2 className="text-xl font-semibold mb-4">Recommended Courses</h2>
-      <div className="flex gap-4 flex-wrap">
+      <div className='overflow-x-auto whitespace-nowrap scroll-smooth'>
+      <div className="flex  items-center gap-4 flex-col justify-between md:flex-row">
         {recommendedCourses.map((course, i) => (
           <RecommendedCourseCard key={i} {...course} />
         ))}
       </div>
    
                    <div>
-                   {/* 
-                    */}
+                   </div>
+
                 
    
 

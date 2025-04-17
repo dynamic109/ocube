@@ -1,10 +1,9 @@
 import React from 'react'
-import { CiSearch ,CiStar  } from "react-icons/ci";
+
 import { FiBookOpen } from "react-icons/fi";
 import { RiTimerLine, RiFileList3Line } from "react-icons/ri";
 import { IoIosPeople } from "react-icons/io";
-import { FcGoogle } from "react-icons/fc";
-import { BsMeta } from "react-icons/bs";
+
 import TopInstructors from './Topinstructors';
 import DashCard from './Dashcourse';
 const tasks =[
@@ -63,7 +62,7 @@ const yourCourses = [
               <div className="flex mt-3 ">
               </div>
                
-               <div className=' flex  flex-col  p-3 md:flex-row gap-3 mt-3 justify-between '>
+               <div className=' flex  flex-col gap-4  items-center p-3 md:flex-row  mt-3 justify-between '>
                {tasks.map((item, index) => (
                 <div className=' bg-[#F5F5F5] shadow  p-6 border-amber-100 rounded-sm'
                 key={index}>
@@ -79,7 +78,7 @@ const yourCourses = [
 </div>
               <h3 className='font-semibold text-[24px] mt-3'> jump back right in</h3>
                
-   <div className="flex flex-col md:flex-row justify-between gap-4">
+   <div className="flex flex-col items-center md:flex-row justify-between gap-4">
         {yourCourses.map((course, i) => (
           <DashCard key={i} {...course} />
         ))}

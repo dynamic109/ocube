@@ -81,7 +81,7 @@ const Resources = () => {
               placeholder="Search for anything here "
             />{" "}
           </div>
-          <div className=" flex-col   md:flex-row  w-[100%] mt-3 gap-10">
+          <div className="  flex flex-col  justify-between  md:flex-row  w-[100%] mt-3 ">
             <button className=" border-[1px] border-[#F8F8F8] bg-[#F8F8F8] rounded-xl m-1  hover:bg-[#148E88] ml-2 hover:text-[white] py-3 px-4">
               All
             </button>
@@ -105,14 +105,14 @@ const Resources = () => {
             </button>
           </div>
 
-          <div className="mt-9 grid md:grid-cols-2 grid-rows-2 lg:grid-cols-4 gap-3 lg:grid-rows-4  ">
+          <div className="mt-9 grid md:grid-cols-2 p-3 grid-rows-2 lg:grid-cols-4 gap-3 lg:grid-rows-4  ">
             {Resource.map((item, index) => (
               <div key={index}>
-                <div className=" gap-3 flex flex-col text-left items-left ">
+                <div className=" gap-3 flex flex-col  text-left items-left ">
                   {item.resourceimg}{" "}
                   <>
-                    <p className="font-semibold">{item.text}</p>{" "}
-                    <p className="text-[#7B7B7B]">{item.by}</p>
+                    <p className="font-semibold ">{item.text}</p>{" "}
+                    <p className="text-[#7B7B7B] pb-6">{item.by}</p>
                   </>
                 </div>
               </div>

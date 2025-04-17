@@ -1,6 +1,9 @@
 import React from "react";
 import Logo from "/Logo.png";
+
+import { useState } from "react";
 import { TbLayoutDashboard } from "react-icons/tb";
+import { IoMdMenu } from "react-icons/io";
 import { RiGraduationCapFill, RiLogoutBoxRFill } from "react-icons/ri";
 import { IoFileTrayFullSharp, IoSettingsOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
@@ -32,11 +35,13 @@ const Navitems = [
 ];
 
 const SideBar = () => {
-  // const linkClass=({isActive})=> isActive?'bg-[#f0f6f6] hover:bg-[#148E88]';
   return (
     <>
+
+  
+    <div >
       <div className="m-auto  p-auto ">
-        <div className="hidden bg-[#f0f6f6] p-6, z-[1000] fixed h-full  w-60 lg:flex flex-col  shadow-sm">
+        <div className="bg-[#f0f6f6] hidden p-6, z-[1000] fixed h-full  w-60 lg:flex flex-col  shadow-sm">
           <div className="flex  items-center justify-between p-3">
             <img src={Logo} alt="logo" />
           </div>
@@ -74,6 +79,7 @@ const SideBar = () => {
             </ul>
           </div>
         </div>
+      </div>
       </div>
     </>
   );
