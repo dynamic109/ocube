@@ -17,7 +17,7 @@ function Header({ isOpen, setIsOpen }) {
         <li><a href="#">Home</a></li>
         <li><a href="#">Courses</a></li>
         <li><a href="/Resources">Resources</a></li>
-       <li> <a href="#">About Us</a></li>
+       <li> <a href="/About">About Us</a></li>
        <li> <a href="#">Contact Us</a></li>
         
         </ul>
