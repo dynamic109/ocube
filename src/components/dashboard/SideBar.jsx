@@ -4,6 +4,7 @@ import { TbLayoutDashboard } from "react-icons/tb";
 import { RiGraduationCapFill, RiLogoutBoxRFill } from "react-icons/ri";
 import { IoFileTrayFullSharp, IoSettingsOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../../Context";
 
 const Navitems = [
   {
@@ -32,6 +33,7 @@ const Navitems = [
 ];
 
 const SideBar = () => {
+  const { handleLogout } = useAuth();
   // const linkClass=({isActive})=> isActive?'bg-[#f0f6f6] hover:bg-[#148E88]';
   return (
     <>
@@ -62,6 +64,7 @@ const SideBar = () => {
                 <li className="mb-2 mt-auto rounded hover:shadow hover:bg-[#148E88] hover:text-[white] py-2 px-3">
                   <Link
                     className="flex text-center mt-auto items-center gap-2"
+                    onClick={handleLogout}
                     to="/Dashlogin"
                   >
                     <>
