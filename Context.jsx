@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
     const data = await res.json();
     if (res.ok) {
       localStorage.setItem("token", data.user.verificationToken);
-      localStorage.setItem("user data", data.user);
+      localStorage.setItem("user data", JSON.stringify(data.user));
       setUserData(data.user);
     } else {
       throw new Error(data.message || "Login failed");
