@@ -10,10 +10,12 @@ import Dashlayout from "./components/Layout/Dashlayout";
 import Dashboard from "./components/dashboard/Dashboard";
 import About from "./components/dashboard/About";
 import { AuthProvider } from "../Context";
+import { ToastContainer } from "react-toastify";
 function App() {
   return (
     <div>
       <AuthProvider>
+        <ToastContainer autoClose={3000} hideProgressBar={false} />
         <BrowserRouter>
           <Routes>
             {/* regular pages */}

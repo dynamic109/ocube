@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Logo from "/Logo.png";
 import { useAuth } from "../../../Context";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Dashlogin = () => {
   const { handleLogin } = useAuth();
@@ -15,10 +16,10 @@ const Dashlogin = () => {
     try {
       setLoading(true);
       await handleLogin(email, password);
-      console.log("login successful");
+      toast.success("login successful");
       navigate("/dashboard");
-    } catch (err) {
-      console.log(err.message);
+    } catch (error) {
+      toast.warning(error.message);
     }
     setLoading(false);
   };
@@ -77,7 +78,6 @@ const Dashlogin = () => {
                           Password
                         </label>
                         <button className="text-[#148E88] text-end">
-                          {" "}
                           forgot password?
                         </button>
                       </div>
@@ -94,7 +94,7 @@ const Dashlogin = () => {
                 <button
                   onClick={handleSubmit}
                   type="submit"
-                  className="bg-[#148E88] lg:w-[25%] mt-6 text-white rounded-md font-semibold hover:bg-teal-700 transition duration-200  p-3"
+                  className="bg-[#148E88] w-full md:w-[25%] mt-6 text-white rounded-md font-semibold hover:bg-teal-700 transition duration-200  p-3"
                 >
                   Login
                 </button>
