@@ -11,6 +11,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import About from "./components/dashboard/About";
 import { AuthProvider } from "../Context";
 import { ToastContainer } from "react-toastify";
+import Verify from "./components/dashboard/Verify";
 function App() {
   return (
     <div>
@@ -26,7 +27,8 @@ function App() {
 
             {/* dashboard pages with sidebar */}
             <Route path="/dashboard" element={<Dashlayout />}>
-              <Route index element={<Dashboard />} />
+              <Route index element={<Verify />} />
+              <Route path="verify" element={<div>{<Course />}</div>} />
               <Route path="courses" element={<div>{<Course />}</div>} />
               <Route path="resources" element={<Resources />} />
             </Route>
