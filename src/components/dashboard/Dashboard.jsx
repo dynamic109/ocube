@@ -1,4 +1,5 @@
-import React from 'react'
+import { useEffect, useState } from 'react';
+
 import { CiSearch ,CiStar  } from "react-icons/ci";
 import { FiBookOpen } from "react-icons/fi";
 import { RiTimerLine, RiFileList3Line } from "react-icons/ri";
@@ -7,6 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 import { BsMeta } from "react-icons/bs";
 import TopInstructors from './Topinstructors';
 import DashCard from './Dashcourse';
+import UserProfile from './UserProfile';
 const tasks =[
     {
         taskimg:<RiTimerLine />,
@@ -53,13 +55,33 @@ const yourCourses = [
 ]
 
  const Dashboard = () => {
+
+
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    const storedData = localStorage.getItem('user data');
+    if (storedData) {
+      setUserData(JSON.parse(storedData));
+    }
+  }, []);
+
+  if (!userData) return <p>Loading Dashboard...</p>;
+
+
   return (
     <section className="m-auto bg-[white]  p-auto ">
             <div className=" p-6">
               <h1 className="font-bold text-[34px] pt-5">Dashboard</h1>
               <p className="text-[grey] text-[14px] ">
-               welcome back {""},Learn something new today.
+               welcome back <span className="font-semibold text-black"> {userData.name}</span> !Learn something new today.
               </p>
+
+                 <div>
+                < UserProfile />
+                 </div>
+
+
               <div className="flex mt-3 ">
               </div>
                

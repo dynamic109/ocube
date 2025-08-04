@@ -2,25 +2,45 @@ import React, { useState } from "react";
 import Logo from "/Logo.png";
 import { useAuth } from "../../../Context";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Dashlogin = () => {
   const { handleLogin } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState({});
   const navigate = useNavigate();
 
+  const validate = () => {
+    const newErrors = {};
+    if (!email) newErrors.email = "Email is required";
+    if (!password) newErrors.password = "Password is required";
+
+    setError(newErrors);
+
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = async (e) => {
+    console.log(error);
     e.preventDefault();
-    try {
-      setLoading(true);
-      await handleLogin(email, password);
-      console.log("login successful");
-      navigate("/dashboard");
-    } catch (err) {
-      console.log(err.message);
+    console.log(validate());
+
+    if (validate()) {
+      try {
+        setLoading(true);
+        await handleLogin(email, password);
+        toast.success("login successful");
+        navigate("/dashboard");
+      } catch (error) {
+        toast.error(error.message);
+      } finally {
+        setLoading(false);
+      }
     }
-    setLoading(false);
+
+    // console.log(error);
   };
   return (
     <>
@@ -39,73 +59,78 @@ const Dashlogin = () => {
             </div>
           ) : (
             <div
-              className="bg-no-repeat p-6"
+              className="p-6"
               style={{
                 backgroundImage: "url('/Ocubebg.png')",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
-                height: "100%",
+                height: "100vh",
                 width: "100%",
               }}
             >
-              <div className=" m-auto p-6 flex  flex-col justify-center  my-6   items-center">
+              <div className="max-w-[600px] mx-auto p-6 flex  flex-col justify-center my-6 items-center">
                 <div>
                   <img src={Logo} alt="logo" />
                 </div>
-                <div>
+                <div className="w-full mt-6">
                   <h1 className="text-[28px] mt-3 text-center  pb-0 font-bold">
                     Login to your dashboard
                   </h1>
                   <p className="text-[#1B1C1E] text-[14px]  text-center text-lg ">
                     Enter your details to access your dashboard.
                   </p>
-                  <div className="flex flex-col mt-6 justify-between gap-4">
-                    <div className="mt-6">
-                      <label className="text-lg  font-medium">
+                  <div className="w-full flex flex-col mt-12 justify-center items-center gap-4">
+                    <div className="w-full mt-6">
+                      <label className="text-base font-medium">
                         Email Adress
                       </label>
                       <input
-                        className="w-full border-2 border-gray-100 rounded-xl p-3 mt-1   "
+                        className={`w-full border-2 border-gray-100 rounded-xl p-3 mt-1 ${
+                          error.email ? "border-red-600" : "border-gray-100"
+                        }`}
                         placeholder="Enter email address"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                       />
+                      <p className="text-xs text-red-600">{error.email}</p>
                     </div>
-                    <form className="mt-6">
-                      <div className="flex justify-between">
-                        <label className=" ml-2 text-base sm:text-[16px]  font-medium">
+                    <div className="w-full">
+                      <div className="w-full flex justify-between">
+                        <label className=" ml-2 text-base  font-medium">
                           Password
                         </label>
-                        <button className="text-[#148E88] text-end">
-                          {" "}
-                          forgot password?
-                        </button>
+                        {/* <button className="text-[#148E88] text-end">
+                        forgot password?
+                      </button> */}
                       </div>
                       <input
-                        className="w-full border-2 border-gray-100 rounded-xl p-3 mt-1   "
+                        className={`w-full border-2 border-gray-100 rounded-xl p-3 mt-1 ${
+                          error.password ? "border-red-600" : "border-gray-100"
+                        }`}
                         placeholder="Enter your password"
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                       />
-                    </form>
-                  </div>
-                </div>
-                <button
-                  onClick={handleSubmit}
-                  type="submit"
-                  className="bg-[#148E88] lg:w-[25%] mt-6 text-white rounded-md font-semibold hover:bg-teal-700 transition duration-200  p-3"
-                >
-                  Login
-                </button>
-
-                <div className="flex sm:flex-col  text-center p-2">
-                  <p>Don`t have an account? </p>{" "}
-                  <a href="/Signin">
-                    <button className="text-[#148E88]  hover:text-teal-700 transition duration-200">
-                      Register
+                      <p className="text-xs text-red-600">{error.password}</p>
+                    </div>
+                    <button
+                      onClick={handleSubmit}
+                      type="submit"
+                      className="bg-[#148E88] w-full mt-6 text-white rounded-md font-semibold hover:bg-teal-700 transition duration-200  p-3"
+                    >
+                      Login
                     </button>
-                  </a>
+
+                    <div className="flex sm:flex-col  text-center p-2">
+                      <p>Don`t have an account? </p>{" "}
+                      <a href="/Signin">
+                        <button className="text-[#148E88]  hover:text-teal-700 transition duration-200">
+                          Register
+                        </button>
+                      </a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
