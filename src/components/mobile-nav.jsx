@@ -3,6 +3,8 @@ import { TbLetterX } from "react-icons/tb";
 import Logo from "../assets/Logo.svg"
 
 
+
+
 export default function MobileNav({ isOpen, setIsOpen }) {
   return (
     <nav className={`${isOpen === true ? "flex flex-col translate-x-0 opacity-100" : "hidden -translate-x-full opacity-0"} px-3 py-6  transform transition-transform duration-300 ease-in-out `}>
