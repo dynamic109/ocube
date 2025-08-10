@@ -12,6 +12,7 @@ import About from "./components/dashboard/About";
 import { AuthProvider } from "../Context";
 import { ToastContainer } from "react-toastify";
 import Verify from "./components/dashboard/Verify";
+
 function App() {
   return (
     <div>
@@ -23,13 +24,13 @@ function App() {
             <Route path="/" element={<LandingPage />} />
             <Route path="/Dashlogin" element={<Dashlogin />} />
             <Route path="/Signin" element={<Signin />} />
-            <Route path="about" element={<About />} />
+            <Route path="/verify" element={<Verify />} />
+            <Route path="/about" element={<About />} />
 
             {/* dashboard pages with sidebar */}
             <Route path="/dashboard" element={<Dashlayout />}>
-              <Route index element={<Verify />} />
-              <Route path="verify" element={<div>{<Course />}</div>} />
-              <Route path="courses" element={<div>{<Course />}</div>} />
+              <Route index element={<Dashboard />} />
+              <Route path="courses" element={<Course />} />
               <Route path="resources" element={<Resources />} />
             </Route>
           </Routes>
