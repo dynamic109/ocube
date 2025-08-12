@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Router } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 import { Routes } from "react-router";
 import LandingPage from "./components/landing-page/landing";
 import Dashlogin from "./components/dashboard/Dashlogin";
@@ -12,6 +12,7 @@ import About from "./components/dashboard/About";
 import { AuthProvider } from "../Context";
 import { ToastContainer } from "react-toastify";
 import Verify from "./components/dashboard/Verify";
+import ProtectedRoute from "./components/dashboard/ProtectedRoute";
 
 function App() {
   return (
@@ -22,13 +23,34 @@ function App() {
           <Routes>
             {/* regular pages */}
             <Route path="/" element={<LandingPage />} />
-            <Route path="/Dashlogin" element={<Dashlogin />} />
-            <Route path="/Signin" element={<Signin />} />
-            <Route path="/verify" element={<Verify />} />
+            <Route
+              path="/Dashlogin"
+              element={
+                <ProtectedRoute>
+                  <Dashlogin />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/Signin"
+              element={
+                <ProtectedRoute>
+                  <Signin />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="/verify/:token" element={<Verify />} />
             <Route path="/about" element={<About />} />
 
             {/* dashboard pages with sidebar */}
-            <Route path="/dashboard" element={<Dashlayout />}>
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashlayout />
+                </ProtectedRoute>
+              }
+            >
               <Route index element={<Dashboard />} />
               <Route path="courses" element={<Course />} />
               <Route path="resources" element={<Resources />} />

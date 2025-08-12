@@ -115,6 +115,7 @@ const Signin = () => {
                       }`}
                       placeholder="Enter email address"
                       value={email}
+                      type="email"
                     />
                     <p className="text-red-500 text-xs">{error.email}</p>
                   </div>
@@ -128,7 +129,7 @@ const Signin = () => {
                         error.phonenumber ? "border-red-500" : "border-gray-100"
                       }`}
                       placeholder="Enter Phone Number"
-                      type="numbers"
+                      type="number"
                       value={phonenumber}
                     />
                     <p className="text-red-500 text-xs">{error.phonenumber}</p>

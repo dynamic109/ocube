@@ -39,8 +39,6 @@ const Dashlogin = () => {
         setLoading(false);
       }
     }
-
-    // console.log(error);
   };
   return (
     <>
@@ -89,6 +87,7 @@ const Dashlogin = () => {
                           error.email ? "border-red-600" : "border-gray-100"
                         }`}
                         placeholder="Enter email address"
+                        type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                       />
