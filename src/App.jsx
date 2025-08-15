@@ -26,9 +26,9 @@ function App() {
             <Route
               path="/Dashlogin"
               element={
-                <ProtectedRoute>
+                // <ProtectedRoute>
                   <Dashlogin />
-                </ProtectedRoute>
+                // </ProtectedRoute>
               }
             />
             <Route
