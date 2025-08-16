@@ -26,7 +26,7 @@ return (
 
       <div className="">
         <h2 className="text-xl font-bold">Welcome, {userData.name}</h2>
-        <p>Email: {userData.email}</p>
+        <p><span className="font-semibold">Email</span>: {userData.email}</p>
       </div>
     </div>
   </div>
