@@ -30,7 +30,9 @@ const Dashlogin = () => {
     if (validate()) {
       try {
         setLoading(true);
+
         await handleLogin(email, password);
+        await handleFetchUserProfile();
         toast.success("login successful");
         await handleFetchUserProfile();
         navigate("/dashboard");
