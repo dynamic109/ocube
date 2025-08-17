@@ -9,15 +9,12 @@ export const AuthProvider = ({ children }) => {
   const [isVerified, setIsVerified] = useState(false);
   const [resendMessage, setResendMessage] = useState(false);
 
-
-useEffect(() => {
+  useEffect(() => {
     const storedData = localStorage.getItem("user data");
     if (storedData) {
       setUserData(JSON.parse(storedData));
     }
-}, []);
-    
-
+  }, []);
 
   const handleLogin = async (email, password) => {
     const res = await fetch(`${baseUrl}/login`, {
@@ -63,13 +60,13 @@ useEffect(() => {
     console.log(res);
 
     const data = await res.json();
-    if (
-      res.ok ||
-      data.message === "This email address has already been verified."
-    ) {
+    if (res.status === 200) {
       setMessage(data.message || "Verification successful");
       setIsVerified(true);
       console.log(data);
+    } else if (res.status === 409) {
+      setMessage(data.message || "Email already verified");
+      setIsVerified(true);
     } else {
       console.log(data.message);
       setMessage(data.message || "Verification failed");
