@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext();
 
@@ -8,6 +8,16 @@ export const AuthProvider = ({ children }) => {
   const [message, setMessage] = useState("");
   const [isVerified, setIsVerified] = useState(false);
   const [resendMessage, setResendMessage] = useState(false);
+
+
+useEffect(() => {
+    const storedData = localStorage.getItem("user data");
+    if (storedData) {
+      setUserData(JSON.parse(storedData));
+    }
+}, []);
+    
+
 
   const handleLogin = async (email, password) => {
     const res = await fetch(`${baseUrl}/login`, {
