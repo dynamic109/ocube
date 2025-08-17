@@ -54,7 +54,7 @@ const Dashboard = () => {
   return (
     <section className="m-auto bg-[white]  p-auto ">
       <div className=" p-6">
-        <div className=" flex justify-between items-center ">
+        <div className=" flex flex-col lg:flex-row justify-between items-center ">
           <h1 className="font-bold text-[34px] pt-5">Dashboard</h1>
 
           <div>
