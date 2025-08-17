@@ -8,7 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 import { BsMeta } from "react-icons/bs";
 import TopInstructors from "./Topinstructors";
 import DashCard from "./Dashcourse";
-import UserProfile from "./userProfile";
+import UserProfile from "./UserProfile";
 const tasks = [
   {
     taskimg: <RiTimerLine />,
