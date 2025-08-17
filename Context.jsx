@@ -17,11 +17,12 @@ export const AuthProvider = ({ children }) => {
     });
 
     const data = await res.json();
+    console.log(res);
     if (res.ok) {
-      localStorage.setItem("token", data.user.verificationToken);
+      console.log(data);
+      localStorage.setItem("token", data.token);
       localStorage.setItem("user data", JSON.stringify(data.user));
       // console.log(data.user);
-      setUserData(data.user);
     } else {
       throw new Error(data.message || "Login failed");
     }
@@ -65,6 +66,31 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const handleFetchUserProfile = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      console.log(token);
+      const res = await fetch(`${baseUrl}/api/profile/me`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const data = await res.json();
+      if (res.ok) {
+        console.log("User profile:", data);
+        setUserData(data.user);
+        console.log(userData);
+      } else {
+        console.error(data.message || "Failed to fetch profile");
+      }
+    } catch (error) {
+      console.error("Error fetching profile:", error);
+    }
+  };
+
   const handleResendVerification = async (email) => {
     const res = await fetch(`${baseUrl}/resend-verification`, {
       method: "POST",
@@ -90,6 +116,7 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         userData,
+        setUserData,
         handleLogin,
         handleLogout,
         handleSignup,
@@ -98,6 +125,7 @@ export const AuthProvider = ({ children }) => {
         isVerified,
         handleResendVerification,
         resendMessage,
+        handleFetchUserProfile,
       }}
     >
       {children}

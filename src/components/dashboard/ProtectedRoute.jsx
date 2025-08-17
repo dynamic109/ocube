@@ -1,22 +1,15 @@
-import { Navigate, useLocation } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-export default function ProtectedRoute({ children }) {
-  const userData = JSON.parse(localStorage.getItem("user data"));
+export default function ProtectedRoute({ children, loginRoute }) {
   const token = localStorage.getItem("token");
-  const isAuthenticated = Boolean(userData || token);
-  const location = useLocation();
-  console.log(isAuthenticated, location.pathname);
-
-  if (
-    isAuthenticated &&
-    (location.pathname === "/dashlogin" || location.pathname === "/signin")
-  ) {
-    return <Navigate to="/dashboard" replace />;
-  }
-
-  if (isAuthenticated) {
+  if (loginRoute) {
+    if (token) {
+      return <Navigate to="/dashboard" replace />;
+    }
     return children;
-  } else {
+  }
+  if (!token) {
     return <Navigate to="/Dashlogin" replace />;
   }
+  return children;
 }

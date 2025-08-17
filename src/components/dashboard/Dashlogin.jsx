@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const Dashlogin = () => {
-  const { handleLogin } = useAuth();
+  const { handleLogin, handleFetchUserProfile } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -32,6 +32,7 @@ const Dashlogin = () => {
         setLoading(true);
         await handleLogin(email, password);
         toast.success("login successful");
+        await handleFetchUserProfile();
         navigate("/dashboard");
       } catch (error) {
         toast.error(error.message);
