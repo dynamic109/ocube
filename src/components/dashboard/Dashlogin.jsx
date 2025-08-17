@@ -34,6 +34,7 @@ const Dashlogin = () => {
         await handleLogin(email, password);
         await handleFetchUserProfile();
         toast.success("login successful");
+        await handleFetchUserProfile();
         navigate("/dashboard");
       } catch (error) {
         toast.error(error.message);

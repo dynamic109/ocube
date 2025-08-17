@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import { CiSearch, CiStar } from "react-icons/ci";
 import { FiBookOpen } from "react-icons/fi";
@@ -9,6 +9,7 @@ import { BsMeta } from "react-icons/bs";
 import TopInstructors from "./Topinstructors";
 import DashCard from "./Dashcourse";
 import UserProfile from "./UserProfile";
+import { useAuth } from "../../../Context";
 const tasks = [
   {
     taskimg: <RiTimerLine />,
@@ -51,15 +52,30 @@ const yourCourses = [
 ];
 
 const Dashboard = () => {
+  const { userData } = useAuth();
+  console.log("dashboard:", userData);
+
+  useEffect(() => {
+    const storedData = localStorage.getItem("user data");
+    if (storedData) {
+      // setUserData(JSON.parse(storedData));
+    }
+  }, []);
+
+  if (!userData) return <p>Loading Dashboard...</p>;
+
   return (
     <section className="m-auto bg-[white]  p-auto ">
       <div className=" p-6">
-        <div className=" flex flex-col lg:flex-row justify-between items-center ">
-          <h1 className="font-bold text-[34px] pt-5">Dashboard</h1>
+        <h1 className="font-bold text-[34px] pt-5">Dashboard</h1>
+        <p className="text-[grey] text-[14px] ">
+          welcome back{" "}
+          <span className="font-semibold text-black"> {userData.name}</span>{" "}
+          !Learn something new today.
+        </p>
 
-          <div>
-            <UserProfile />
-          </div>
+        <div>
+          <UserProfile />
         </div>
 
         <div className="flex mt-3 "></div>
@@ -82,10 +98,7 @@ const Dashboard = () => {
             </div>
           ))}
         </div>
-        <h3 className="font-semibold text center-center text-[24px] mt-3">
-          {" "}
-          jump back right in
-        </h3>
+        <h3 className="font-semibold text-[24px] mt-3"> jump back right in</h3>
 
         <div className="flex flex-col md:flex-row justify-between gap-4">
           {yourCourses.map((course, i) => (

@@ -1,0 +1,190 @@
+[1mdiff --git a/Context.jsx b/Context.jsx[m
+[1mindex 7b79ed9..bda680e 100644[m
+[1m--- a/Context.jsx[m
+[1m+++ b/Context.jsx[m
+[36m@@ -1,14 +1,12 @@[m
+[31m-import { createContext, useContext, useState } from "react";[m
+[32m+[m[32mimport { createContext, useContext, useState,  } from "react";[m
+ [m
+ const AuthContext = createContext();[m
+ [m
+ export const AuthProvider = ({ children }) => {[m
+   const [userData, setUserData] = useState(null);[m
+   const baseUrl = import.meta.env.VITE_BASE_URL;[m
+[31m-  const [message, setMessage] = useState("");[m
+[31m-  const [isVerified, setIsVerified] = useState(false);[m
+[31m-  const [resendMessage, setResendMessage] = useState(false);[m
+ [m
+[32m+[m[41m [m
+   const handleLogin = async (email, password) => {[m
+     const res = await fetch(`${baseUrl}/login`, {[m
+       method: "POST",[m
+[36m@@ -19,15 +17,16 @@[m [mexport const AuthProvider = ({ children }) => {[m
+     const data = await res.json();[m
+     console.log(res);[m
+     if (res.ok) {[m
+[31m-      console.log(data);[m
+[31m-      localStorage.setItem("token", data.token);[m
+[32m+[m[32m      localStorage.setItem("token", data.user.verificationToken);[m
+       localStorage.setItem("user data", JSON.stringify(data.user));[m
+       // console.log(data.user);[m
+[32m+[m[32m      setUserData(data.user);[m
+     } else {[m
+       throw new Error(data.message || "Login failed");[m
+     }[m
+   };[m
+ [m
+[32m+[m[32m  // Signup[m
+   const handleSignup = async (name, email, phonenumber, password) => {[m
+     const res = await fetch(`${baseUrl}/signup`, {[m
+       method: "POST",[m
+[36m@@ -66,23 +65,16 @@[m [mexport const AuthProvider = ({ children }) => {[m
+     }[m
+   };[m
+ [m
+[31m-  const handleFetchUserProfile = async () => {[m
+[31m-    try {[m
+[31m-      const token = localStorage.getItem("token");[m
+[31m-      console.log(token);[m
+[31m-      const res = await fetch(`${baseUrl}/api/profile/me`, {[m
+[31m-        method: "GET",[m
+[31m-        headers: {[m
+[31m-          "Content-Type": "application/json",[m
+[31m-          Authorization: `Bearer ${token}`,[m
+[31m-        },[m
+[31m-      });[m
+[32m+[m[32m  const handleResendVerification = async (email) => {[m
+[32m+[m[32m    const res = await fetch(`${baseUrl}/resend-verification`, {[m
+[32m+[m[32m      method: "POST",[m
+[32m+[m[32m      headers: { "Content-Type": "application/json" },[m
+[32m+[m[32m      body: JSON.stringify({ email }),[m
+[32m+[m[32m    });[m
+ [m
+       const data = await res.json();[m
+       if (res.ok) {[m
+[31m-        console.log("User profile:", data);[m
+[31m-        setUserData(data.user);[m
+[31m-        console.log(userData);[m
+[32m+[m[32m        setUserData(data);[m
+       } else {[m
+         console.error(data.message || "Failed to fetch profile");[m
+       }[m
+[36m@@ -91,27 +83,6 @@[m [mexport const AuthProvider = ({ children }) => {[m
+     }[m
+   };[m
+ [m
+[31m-  const handleResendVerification = async (email) => {[m
+[31m-    const res = await fetch(`${baseUrl}/resend-verification`, {[m
+[31m-      method: "POST",[m
+[31m-      headers: { "Content-Type": "application/json" },[m
+[31m-      body: JSON.stringify({ email }),[m
+[31m-    });[m
+[31m-[m
+[31m-    const data = await res.json();[m
+[31m-    if (res.ok) {[m
+[31m-      setResendMessage(data.message || "Verification email sent.");[m
+[31m-    } else {[m
+[31m-      setResendMessage(data.message || "Failed to resend verification email.");[m
+[31m-    }[m
+[31m-  };[m
+[31m-[m
+[31m-  const handleLogout = () => {[m
+[31m-    setUserData(null);[m
+[31m-    localStorage.removeItem("token");[m
+[31m-    localStorage.removeItem("user data");[m
+[31m-  };[m
+[31m-  console.log(userData);[m
+   return ([m
+     <AuthContext.Provider[m
+       value={{[m
+[36m@@ -125,7 +96,6 @@[m [mexport const AuthProvider = ({ children }) => {[m
+         isVerified,[m
+         handleResendVerification,[m
+         resendMessage,[m
+[31m-        handleFetchUserProfile,[m
+       }}[m
+     >[m
+       {children}[m
+[36m@@ -133,4 +103,4 @@[m [mexport const AuthProvider = ({ children }) => {[m
+   );[m
+ };[m
+ [m
+[31m-export const useAuth = () => useContext(AuthContext);[m
+[32m+[m[32mexport const useAuth = () => useContext(AuthContext);[m
+\ No newline at end of file[m
+* Unmerged path src/components/dashboard/Dashboard.jsx
+[1mdiff --git a/src/components/dashboard/Dashlogin.jsx b/src/components/dashboard/Dashlogin.jsx[m
+[1mindex a518d12..9b2d83f 100644[m
+[1m--- a/src/components/dashboard/Dashlogin.jsx[m
+[1m+++ b/src/components/dashboard/Dashlogin.jsx[m
+[36m@@ -30,7 +30,9 @@[m [mconst Dashlogin = () => {[m
+     if (validate()) {[m
+       try {[m
+         setLoading(true);[m
+[32m+[m
+         await handleLogin(email, password);[m
+[32m+[m[32m        await handleFetchUserProfile();[m
+         toast.success("login successful");[m
+         await handleFetchUserProfile();[m
+         navigate("/dashboard");[m
+[1mdiff --git a/src/components/dashboard/UserProfile.jsx b/src/components/dashboard/UserProfile.jsx[m
+[1mindex e8ab50b..cba7287 100644[m
+[1m--- a/src/components/dashboard/UserProfile.jsx[m
+[1m+++ b/src/components/dashboard/UserProfile.jsx[m
+[36m@@ -1,27 +1,36 @@[m
+[31m-import { useEffect, useState } from 'react';[m
+[32m+[m[32mimport { useAuth } from "../../../Context";[m
+ [m
+[31m- function UserProfile() {[m
+[31m-  const [userData, setUserData] = useState(null);[m
+[32m+[m[32mconst UserProfile = () => {[m
+[32m+[m[32m  const { userData } = useAuth();[m
+ [m
+[31m-  useEffect(() => {[m
+[31m-    const storedData = localStorage.getItem('user data');[m
+[31m-    if (storedData) {[m
+[31m-      setUserData(JSON.parse(storedData));[m
+[31m-    }[m
+[31m-  }, []);[m
+[32m+[m[32m  if (!userData) return <p>No user data found</p>;[m
+ [m
+[31m-  if (!userData) return <p>Loading profile...</p>;[m
+ [m
+[31m-  return ([m
+[31m-    <div className="user-profile">[m
+[32m+[m[32m  const profilePicUrl = userData.profilePicture[m
+[32m+[m[32m    ? `https://coube-backend.vercel.app/uploads/${userData.profilePicture}`[m
+[32m+[m[32m    : null;[m
+[32m+[m[32mreturn ([m
+[32m+[m[32m  <div>[m
+[32m+[m[32m    <div className=" p-4 shadow  rounded flex items-center gap-4">[m
+[32m+[m[32m      {profilePicUrl ? ([m
+ [m
+[31m-      <h2 className="profile-name">{userData.name}</h2>[m
+[31m-      <p className="profile-email">{userData.email}</p>[m
+[31m-       <p className="profile-email">{userData.phonenumber}</p>[m
+[31m-  [m
+[32m+[m[32m        <img[m
+[32m+[m[32m          src={profilePicUrl}[m
+[32m+[m[32m          alt={`${userData.name}'s profile`}[m
+[32m+[m[32m          className="w-16 h-16 rounded-full object-cover"[m
+[32m+[m[32m        />[m
+[32m+[m[32m      ) : ([m
+[32m+[m
+[32m+[m[32m        <div className="w-16 h-16 rounded-full bg-white border border-gray-600"></div>[m
+[32m+[m[32m      )}[m
+[32m+[m
+[32m+[m[32m      <div className="">[m
+[32m+[m[32m        <h2 className="text-xl font-bold">Welcome, {userData.name}</h2>[m
+[32m+[m[32m        <p><span className="font-semibold">Email</span>: {userData.email}</p>[m
+[32m+[m[32m      </div>[m
+     </div>[m
+[31m-  );[m
+[32m+[m[32m  </div>[m
+[32m+[m[32m);[m
+ }[m
+ [m
+[31m-[m
+[31m-export default UserProfile;[m
+\ No newline at end of file[m
+[32m+[m[32mexport default UserProfile;[m
