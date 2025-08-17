@@ -23,6 +23,7 @@ export const AuthProvider = ({ children }) => {
       localStorage.setItem("token", data.token);
       localStorage.setItem("user data", JSON.stringify(data.user));
       // console.log(data.user);
+      setUserData(data.user);
     } else {
       throw new Error(data.message || "Login failed");
     }

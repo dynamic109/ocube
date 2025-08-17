@@ -67,16 +67,19 @@ const Dashboard = () => {
   return (
     <section className="m-auto bg-[white]  p-auto ">
       <div className=" p-6">
-        <h1 className="font-bold text-[34px] pt-5">Dashboard</h1>
+       <div className="flex justify-between items-center ">
+ <h1 className="font-bold text-[34px] pt-5">Dashboard</h1>
+    <div>
+          <UserProfile />
+        </div>
+       </div>
         <p className="text-[grey] text-[14px] ">
           welcome back{" "}
           <span className="font-semibold text-black"> {userData.name}</span>{" "}
           !Learn something new today.
         </p>
 
-        <div>
-          <UserProfile />
-        </div>
+    
 
         <div className="flex mt-3 "></div>
 
